@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="University of Cape Coast"
+        android:textAllCaps="true"
+        android:letterSpacing="0.12"
+        android:textColor="@color/gold"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/navy"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/courseInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course (e.g. CSCD 201)"
+        android:inputType="textCapCharacters" />
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/timeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time 24h (HH:MM)"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/roomInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Room" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save lecture and schedule alarm" />
+
+    <Button
+        android:id="@+id/demoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test: notify in 1 minute" />
+
+    <Button
+        android:id="@+id/batteryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Battery optimisation (Tecno / Infinix / Xiaomi)" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lectureList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp" />
+</LinearLayout>

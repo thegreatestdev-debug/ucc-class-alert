@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="Viewport" content="width=device-width, initial-scale=1.0">
-    <tittle>ucc-class-alert</tittle>
- </head>
- <body>
-    <h1>Lecture-alert-pwa</h1>
- </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b3d5c">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'">
+    <title>UCC Class Alert</title>
+    <meta name="description" content="Offline-first lecture alerts for University of Cape Coast students.">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+        <p class="kicker">University of Cape Coast</p>
+        <h1>Class Alert</h1>
+        <p class="tagline">Offline lecture reminders. The timetable lives on this device.</p>
+        <p id="clock" class="clock"></p>
+        <p id="status-line" class="status"></p>
+    </header>
+
+    <div id="alert-banner" class="banner" hidden>
+        <p id="banner-text"></p>
+        <p class="banner-ask">Was this alert timed well?</p>
+        <div class="row-actions">
+            <button type="button" id="fb-early" class="btn btn-ghost">Too early</button>
+            <button type="button" id="fb-ok" class="btn">Just right</button>
+            <button type="button" id="fb-late" class="btn btn-ghost">Too late</button>
+        </div>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="App sections">
+        <button type="button" class="tab is-active" data-tab="upcoming" role="tab" aria-selected="true">Upcoming</button>
+        <button type="button" class="tab" data-tab="timetable" role="tab" aria-selected="false">Timetable</button>
+        <button type="button" class="tab" data-tab="settings" role="tab" aria-selected="false">Settings</button>
+    </nav>
+
+    <main id="main">
+        <section data-panel="upcoming">
+            <div class="section-head">
+                <h2>Next lectures</h2>
+                <button type="button" id="add-btn" class="btn">Add lecture</button>
+            </div>
+            <div id="upcoming-list" class="stack"></div>
+        </section>
+
+        <section data-panel="timetable" hidden>
+            <h2>Full timetable</h2>
+            <div id="timetable-list" class="stack"></div>
+        </section>
+
+        <section data-panel="settings" hidden>
+            <h2>Settings</h2>
+            <label class="field">
+                Default lead time (minutes)
+                <input id="lead-input" type="number" min="5" max="90" step="1">
+            </label>
+            <label class="check">
+                <input id="use-model" type="checkbox">
+                Personalise lead time on this device
+            </label>
+            <p id="model-view" class="mono"></p>
+
+            <h3>Notifications</h3>
+            <p id="notify-state"></p>
+            <button type="button" id="notify-btn" class="btn">Enable system notifications</button>
+
+            <h3>Official timetable</h3>
+            <p>Downloads <span class="mono">data/timetable.json</span> and rejects it unless the Ed25519 signature matches the public key shipped in the app.</p>
+            <button type="button" id="import-btn" class="btn btn-ghost">Import signed sample</button>
+
+            <h3>Board demo</h3>
+            <button type="button" id="demo-btn" class="btn">Alert in 2 minutes</button>
+            <button type="button" id="test-btn" class="btn btn-ghost">Run time-logic tests</button>
+            <ul id="test-results" class="tests"></ul>
+        </section>
+    </main>
+
+    <dialog id="editor">
+        <form id="lecture-form">
+            <h2 id="editor-title">Add lecture</h2>
+            <label class="field">
+                Course
+                <input name="course" type="text" required maxlength="80" autocomplete="off">
+            </label>
+            <label class="field">
+                Day
+                <select name="day" required></select>
+            </label>
+            <label class="field">
+                Time
+                <input name="time" type="time" required>
+            </label>
+            <label class="field">
+                Room
+                <input name="room" type="text" required maxlength="80">
+            </label>
+            <label class="field">
+                Lead minutes (optional override)
+                <input name="leadMinutes" type="number" min="0" max="90" placeholder="use default / model">
+            </label>
+            <div class="row-actions">
+                <button type="button" id="editor-close" class="btn btn-ghost">Cancel</button>
+                <button type="submit" class="btn">Save</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./js/app.js"></script>
+</body>
 </html>

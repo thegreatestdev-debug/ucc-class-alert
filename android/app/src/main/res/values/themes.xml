@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.UccClassAlert" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/navy</item>
+        <item name="colorPrimaryVariant">@color/navy</item>
+        <item name="colorOnPrimary">@color/paper</item>
+        <item name="colorSecondary">@color/gold</item>
+        <item name="android:statusBarColor">@color/navy</item>
+        <item name="android:windowBackground">@color/paper</item>
+    </style>
+</resources>

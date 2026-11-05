@@ -1,0 +1,24 @@
+{
+  "issuedAt": "2026-11-05T00:00:00.000Z",
+  "lectures": [
+    {
+      "course": "CSCD 201",
+      "day": 1,
+      "time": "08:00",
+      "room": "CS Lab 1"
+    },
+    {
+      "course": "CSCD 204",
+      "day": 3,
+      "time": "10:30",
+      "room": "LT3"
+    },
+    {
+      "course": "MATH 201",
+      "day": 4,
+      "time": "14:00",
+      "room": "Science Block A"
+    }
+  ],
+  "signature": ""
+}
